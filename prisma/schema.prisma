@@ -1,0 +1,16 @@
+generator client {
+  provider        = "prisma-client-js"
+  output          = "../node_modules/.prisma/client"
+  previewFeatures = ["fullTextSearch", "fullTextIndex"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_PRODUCTION")
+}
+
+model master_asset {
+  id         Int       @id @default(autoincrement())
+  name       String    @db.Text
+  created_at DateTime? @db.Timestamp(0)
+}
