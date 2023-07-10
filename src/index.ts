@@ -5,7 +5,9 @@ const prisma = new PrismaClient()
 const app = express()
 
 app.use(express.json())
-
+app.get(`/`, async (req, res) => {
+  res.json({result: 'home'})
+})
 app.get(`/user`, async (req, res) => {
   const result = await prisma.master_asset.findMany()
   res.json(result)
